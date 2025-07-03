@@ -1,5 +1,7 @@
 #! /bin/bash
 
+clear
+
 THIS_DIR="$(dirname "$(realpath "$0")")"
 source "$THIS_DIR"/.env
 
