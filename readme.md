@@ -1,12 +1,18 @@
 
-
 ### Addition of Arbitrary-length Binary Numbers in C++
 
-- input.txt  - two lines: numbers from 0 and 1  
-- output.txt - the result
-- tests
-- ci
-- linter 
+- [x] input.txt  - two lines: numbers from 0 and 1  
+- [ ] output.txt - the result
+- [ ] tests
+- [ ] ci
+- [ ] linter 
+
+
+### Build & Run:
+
+```bash 
+./script/br.sh
+```
 
 
 ### Roadmap:
