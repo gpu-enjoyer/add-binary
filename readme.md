@@ -1,46 +1,34 @@
 
 ### Addition of Arbitrary-length Binary Numbers in C++
 
-- [x] input.txt  - two lines: numbers from 0 and 1  
-- [ ] output.txt - the result
+- [x] input.txt: two binary lines  
+- [x] console: C = A + B
+- [ ] output.txt: the result
 - [ ] tests
-- [ ] ci
+- [ ] CI
 - [ ] linter 
 
 
-### Build & Run:
+### Build & Run
 
-```bash 
-./script/br.sh
-```
-
-
-### Roadmap:
-
-- [x] `inputFile.seekg(0);`
-
-- [x] переместить каретку на строку `inputLine` (нумеровать с нуля)
-
-- [x] получить `length, inputZeros`
-
-- [x] `arrSize = (length - inputZeros - 1) / WORD_BITS + 1;`
-
-- [x] `arr = new word_t[arrSize];`
-  
-- [x] `zeros = WORD_BITS * arrSize - (length - inputZeros);`
-
-- [x] выровнять ведущие нули
-
-- [x] переписать строку в `arr`
-
-- [ ] `C = A + B`
-
-- [ ] `C.output()`
-
-- [ ] ...
+edit `input.txt`  
+run `./script/br.sh`
+check console output
 
 
-### todo-мысли: когда числа действительно произвольной длины, памяти не хватает
+### Todo
+
+- [ ] support range-based for loop
+- [ ] enumerate arr in reverse order maybe
+- [ ] add more functions
+- [ ] ignore input spaces
+- [ ] support operator[][]
+- [ ] convert to class
+- [ ] add Windows compatibility
+- [ ] refuse memory reallocation if the last carry bit == 1
+
+
+### Мысли: когда числа действительно произвольной длины, памяти не хватает
 
 - числа могут быть действительно большие.  
   поэтому надо оценивать доступную память

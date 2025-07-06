@@ -3,14 +3,15 @@
 
 int main()
 {
-    std::filesystem::path 
-    p("/home/user/Desktop/add-binary/input.txt");
+    std::filesystem::path p("../input.txt");
 
-    Number A(p, 0), B(p, 1), C(A + B);
+    Number A(p, 0);
+    Number B(p, 1);
+    Number C(A + B);
 
-    OUT_NUM(A);
-    OUT_NUM(B);
-    OUT_NUM(C);
+    outputABC(A, B, C);
+
+    // OUT_NUM(N);
 
     return 0;
 }
