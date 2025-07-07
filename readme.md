@@ -1,6 +1,9 @@
 
 ### Addition of Arbitrary-length Binary Numbers in C++
 
+![screen](screen.png)
+
+
 - [x] input.txt: two binary lines  
 - [x] console: C = A + B
 - [x] output.txt: the result
