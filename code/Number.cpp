@@ -1,6 +1,7 @@
 
 #include "Number.h"
 
+
 #pragma region Get_Numbers
 
 Number::Number(
@@ -144,6 +145,7 @@ void Number::initFields(
 
 #pragma endregion
 
+
 #pragma region Sum_Numbers
 
 Number Number::operator+(
@@ -250,6 +252,8 @@ Number Number::operator+(
             bitMask >>= 1;
         }
 
+        if (Sum.zeros == 8) --Sum.zeros;
+
         OUT_INT(Sum.zeros);
     }
 
@@ -265,6 +269,7 @@ Number::Number(
 }
 
 #pragma endregion
+
 
 #pragma region Special_Member_Functions
 
@@ -342,6 +347,7 @@ Number& Number::operator=(Number&& N)
 }
 
 #pragma endregion
+
 
 #pragma region Other
 
@@ -457,7 +463,19 @@ void Number::out(
     OUT_STR(finalPath);
 
     outputFile.open(finalPath);
-    outputFile << *this;
+    word_t bitMask = static_cast<word_t>(1) << (WORD_BITS - 1 - zeros); 
+    
+    for (word_t* pArr = arr; pArr < arr + arrSize; ++pArr)
+    {
+        while (bitMask != 0)
+        {
+            outputFile << (*pArr & bitMask ? '1' : '0');
+            bitMask >>= 1;
+        }
+
+        bitMask = static_cast<word_t>(1) << (WORD_BITS - 1);
+    }
+
     outputFile.close();
 
     LOG("done");
