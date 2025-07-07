@@ -52,6 +52,10 @@ struct Number
                 { return (a & b) | (b & c) | (a & c); }
     //
 
+    // output.txt << (N)
+    void out(
+        const std::filesystem::path& outputPath);
+
     Number();
     ~Number();
 
@@ -68,7 +72,7 @@ std::ostream& operator<<(
     const Number& N);
 
 // std::cout << (A + B = C)
-void outputABC(
+void printABC(
     const Number& A,
     const Number& B,
     const Number& C);

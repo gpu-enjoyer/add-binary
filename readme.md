@@ -3,7 +3,7 @@
 
 - [x] input.txt: two binary lines  
 - [x] console: C = A + B
-- [ ] output.txt: the result
+- [x] output.txt: the result
 - [ ] tests
 - [ ] CI
 - [ ] linter 

@@ -3,15 +3,18 @@
 
 int main()
 {
-    std::filesystem::path p("../input.txt");
+    std::filesystem::path inputPath("../input.txt");
 
-    Number A(p, 0);
-    Number B(p, 1);
+    Number A(inputPath, 0);
+    Number B(inputPath, 1);
+
     Number C(A + B);
 
-    outputABC(A, B, C);
+    printABC(A, B, C);
 
-    // OUT_NUM(N);
+    std::filesystem::path outputPath("../output.txt");
+
+    C.out(outputPath);
 
     return 0;
 }

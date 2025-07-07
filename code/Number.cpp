@@ -28,8 +28,8 @@ void Number::checkPath(
     const std::filesystem::path& inputPath)
 { 
     if (!std::filesystem::exists(inputPath))
-    throw std::runtime_error
-    ("input file does not exist: " + inputPath.string());
+        throw std::runtime_error
+            (WHERE + "input file does not exist: " + inputPath.string());
     LOC();
     OUT_STR(inputPath.string());
 }
@@ -51,7 +51,7 @@ std::streampos Number::moveToLine(
         {
             if (ch == EOF)
                 throw std::runtime_error
-                    ("unexpected input EOF");
+                    (WHERE + "unexpected input EOF");
 
             ch = inputFile.get();
         }
@@ -85,7 +85,7 @@ void Number::initFields(
 
         if (ch != '0' && ch != '1')
             throw std::runtime_error
-                ("input.txt is not binary");
+                (WHERE + "input.txt is not binary");
 
         if (!zerosChecked)
         {
@@ -98,7 +98,7 @@ void Number::initFields(
 
     if (length == 0)
         throw std::runtime_error
-            ("empty input.txt");
+            (WHERE + "empty input.txt");
 
     if (length == inputZeros)
     {
@@ -114,7 +114,7 @@ void Number::initFields(
 
     if (zeros >= WORD_BITS)
         throw std::logic_error
-            ("zeros >= WORD_BITS");
+            (WHERE + "zeros >= WORD_BITS");
 
     inputFile.clear();
     inputFile.seekg(startPos + std::streamoff(inputZeros));
@@ -367,7 +367,7 @@ std::ostream& operator<<(
     return os;
 }
 
-void outputABC(
+void printABC(
     const Number& A,
     const Number& B,
     const Number& C)
@@ -428,9 +428,39 @@ void outputABC(
     os << C;
 
     os << "\033[0m";
-    os << '\n';
+    os << "\n\n";
 
     std::cout << os.str();
+}
+
+void Number::out(
+    const std::filesystem::path& outputPath)
+{
+    std::filesystem::path  finalPath;
+    std::ofstream          outputFile;
+
+    if (std::filesystem::is_directory(outputPath))
+    {
+        finalPath = outputPath / "output.txt";
+    }
+    else if (outputPath.extension() == ".txt")
+    {
+        finalPath = outputPath;
+    }
+    else
+    {
+        throw std::runtime_error
+            (WHERE + "outputPath neither .txt nor dir");
+    }
+
+    LOC();
+    OUT_STR(finalPath);
+
+    outputFile.open(finalPath);
+    outputFile << *this;
+    outputFile.close();
+
+    LOG("done");
 }
 
 #pragma endregion
