@@ -237,6 +237,10 @@ Number Number::operator+(
         ++Sum.arrSize;
         Sum.zeros = WORD_BITS - 1;
     }
+    else if (Sum.arrSize == 1 && Sum.arr[0] == 0) 
+    {
+        Sum.zeros = 7;
+    }
     else
     {
         Sum.zeros = 0;
@@ -251,12 +255,11 @@ Number Number::operator+(
 
             bitMask >>= 1;
         }
-
-        if (Sum.zeros == 8) --Sum.zeros;
-
-        OUT_INT(Sum.zeros);
     }
 
+    LOC();
+    OUT_INT(Sum.zeros);
+    
     return Sum;
 }
 
