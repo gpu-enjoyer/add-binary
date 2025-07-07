@@ -239,7 +239,7 @@ Number Number::operator+(
     }
     else if (Sum.arrSize == 1 && Sum.arr[0] == 0) 
     {
-        Sum.zeros = 7;
+        Sum.zeros = WORD_BITS - 1;
     }
     else
     {
