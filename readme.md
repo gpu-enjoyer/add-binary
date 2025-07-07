@@ -12,8 +12,8 @@
 ### Build & Run
 
 edit `input.txt`  
-run `./script/br.sh`
-check console output
+run `./script/br.sh`  
+check console and `output.txt`
 
 
 ### Todo

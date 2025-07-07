@@ -7,8 +7,7 @@ cd "$THIS_DIR"/.. || exit 1
 
     [ -d build ] && rm -rf build
     mkdir build
-    cmake -B build -S code
-    cmake --build build
+    make
 
 cd "$ORIG_DIR" || exit 1
 
